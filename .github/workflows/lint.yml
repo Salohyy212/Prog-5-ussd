@@ -7,24 +7,25 @@ on:
     branches: [ main ]
 
 jobs:
-  checkstyle:
+  lint:
+    name: Run Checkstyle
     runs-on: windows-latest
 
     steps:
-      - name: Cloner le dépôt
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Installer Java
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Télécharger Checkstyle
+      - name: Download Checkstyle
         run: |
           mkdir -p tools
           curl -L -o tools/checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.4/checkstyle-10.12.4-all.jar
 
-      - name: Exécuter Checkstyle
+      - name: Run Checkstyle
         run: |
           java -jar tools/checkstyle.jar -c checkstyle.xml src/
