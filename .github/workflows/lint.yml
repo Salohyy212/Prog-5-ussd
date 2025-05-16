@@ -23,8 +23,10 @@ jobs:
 
       - name: Download Checkstyle
         run: |
-          mkdir -p tools
-          curl -L -o tools/checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.4/checkstyle-10.12.4-all.jar
+          if (-Not (Test-Path "tools")) { New-Item -ItemType Directory -Path "tools" }
+          Invoke-WebRequest -Uri https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.4/checkstyle-10.12.4-all.jar -OutFile tools/checkstyle.jar
+        shell: pwsh
+
 
       - name: Run Checkstyle
         run: |
