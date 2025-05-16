@@ -2,6 +2,7 @@ public class MenuOption {
     private final String key;
     private final String label;
     private final String targetMenuId;
+
     public MenuOption(String key, String label, String targetMenuId) {
         this.key = key;
         this.label = label;
@@ -20,6 +21,3 @@ public class MenuOption {
         return targetMenuId;
     }
 }
-
-
-

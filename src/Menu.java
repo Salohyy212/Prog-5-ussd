@@ -1,4 +1,3 @@
-
 import java.util.List;
 
 public class Menu {
@@ -32,4 +31,3 @@ public class Menu {
         System.out.print("\nEntrez votre choix : ");
     }
 }
-
